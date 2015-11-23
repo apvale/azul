@@ -33,26 +33,5 @@ public class HomePage {
 		//Assert.assertEquals(driver.findElement(By.id("showSaleList")).getText(), "Vendas e Orçamentos");
 	}
 	
-/*	WebElement select = driver.findElement(By.id("liVendas"));
-	List<WebElement> options = select.findElements(By.tagName("option"));
-
-	for (WebElement option : options) {
-
-	if("Germany".equals(option.getText().trim()))
-
-	 option.click();   
-	}*/
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-			
-	
 	
 }

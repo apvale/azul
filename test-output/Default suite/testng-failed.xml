@@ -6,6 +6,8 @@
       <class name="contaazul.exercises.Exercise2">
         <methods>
           <include name="validaVenda"/>
+          <include name="acessarMenuVendas"/>
+          <include name="fecharBrowser"/>
           <include name="novaVenda"/>
         </methods>
       </class> <!-- contaazul.exercises.Exercise2 -->

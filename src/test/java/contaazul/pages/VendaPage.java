@@ -8,6 +8,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -17,9 +18,8 @@ import com.thoughtworks.selenium.Wait;
 public class VendaPage {
 	
 	private WebDriver driver;
-	private ResumoVendaPage resumovenda = new ResumoVendaPage(driver);
-
-		
+	private WebDriverWait wait;
+	
 	public VendaPage(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -33,13 +33,14 @@ public class VendaPage {
 	By numeroVenda = By.id("negotiationNumber");
 	
 	public void menuVendas(){
-		
+		wait =  new WebDriverWait(driver, 10);
 		Actions acoes = new Actions(driver);
 		WebElement menuHoverLink = driver.findElement(By.xpath("//a[contains(text(),'Vendas')]"));
 		acoes.moveToElement(menuHoverLink);
 		acoes.perform();
 		driver.findElement(By.xpath("//a[contains(@href, '#/vendas-e-orcamentos')]")).click();
 		driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnBlankslateNewProposal")));
 	}
 	
 	public void adicionaCliente() throws InterruptedException{
@@ -61,15 +62,17 @@ public class VendaPage {
 	public void adicionarNProdutos(int num) throws InterruptedException {
 		
 		for (int i = 0; i < num; i++) {		
-			Thread.sleep(1000);
+			
 			driver.findElement(By.id("negotiationItem" + i)).sendKeys("Produto" + i);
-			
+			Thread.sleep(50);
 			driver.findElement(By.id("negotiationItemDescription" + i)).sendKeys("Detalhe" + i);
-			
+			Thread.sleep(50);
 			driver.findElement(By.id("negotiationItemQuantity" + i)).clear();
+			Thread.sleep(50);
 			driver.findElement(By.id("negotiationItemQuantity" + i)).sendKeys("50");
-			
 			driver.findElement(By.id("negotiationItemPrice" + i)).sendKeys("50");
+			Thread.sleep(60);
+		
 		}
 	}
 	
@@ -90,25 +93,10 @@ public class VendaPage {
 	
 	public void salvarVenda(){
 		driver.findElement(salvarVendaButton).click();
-		Assert.assertEquals(driver.findElement(By.id("notification")).getText(), " foi criada com sucesso.");
-		//A venda nº " + numeroVenda.toString() 
+		Assert.assertEquals(driver.findElement(By.id("notification")).getText(), "A venda nº 4 foi criada com sucesso.");
 	}
 	
-	public void validaVenda(){
 		
-		resumovenda.validaNumeroVenda(4);
-		resumovenda.validaNomeCliente("Ana");
-		resumovenda.validaValorNegociado(11250.00);
-		resumovenda.validaNumParcelas("Parcelado em 10x");
-		resumovenda.validaValorDesconto(1250.00);
-		resumovenda.validaValorTotalItens(12500.00);
-		resumovenda.validaValorTotal(11250.00);
-		
-	}
-	
-	
-	
-	
 		
 }
 
