@@ -1,0 +1,31 @@
+
+Objetivo: O objetivo desse desafio é demonstrar sua experiência e conhecimento com automação de testes automatizados para um sistema web.
+
+Exercício 1:
+Acessar o site do ContaAzul (https://app.contaazul.com.br) e na tela de login realizar testes para:
+validar a mensagem de erro para login com email incorreto
+validar a mensagem de erro para login com senha incorreta
+validar a mensagem de erro para login com email em branco
+validar a mensagem de erro para login com senha em branco
+
+login com sucesso utilizando o email e senha abaixo:
+email: ana.paula.vale@contaazul.com
+senha: 123456
+
+Exercício 2:
+Depois de fazer o login com sucesso, acessar o menu Vendas > Vendas e Orçamentos.
+Criar uma nova venda que contenha:
+5 produtos (preço e quantidade de cada um: 50)
+que seja a prazo e parcelada em 10 vezes
+e que contenha desconto de 10%
+Após salvar a venda, validar todos os dados da venda gerada no resumo dela.
+
+Exercício 3:
+Excluir a venda e validar que ela não se encontra mais na lista de vendas.
+
+Requisitos técnicos:
+● O desafio deve ser entregue escrito em Java, utilizando TestNg e Selenium WebDriver;
+● Fazer uso de boas práticas de desenvolvimento, como o uso de clean code
+● Fazer uso de boas práticas de automação, como o uso de PageObjects
+● O projeto deverá ser compilado utilizando o Maven
+
